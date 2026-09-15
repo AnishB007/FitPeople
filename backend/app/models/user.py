@@ -4,6 +4,7 @@ from app.core.database import Base
 import uuid
 import enum
 from datetime import datetime, timezone
+from sqlalchemy.orm import relationship
 
 class UserRole(str, enum.Enum):
     member = "member"
@@ -22,3 +23,4 @@ class User(Base):
     is_active = Column(Boolean, default=True)
     created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
     archived_at = Column(DateTime(timezone=True), nullable=True)
+    body_metrics = relationship("BodyMetric", back_populates="user", cascade="all, delete-orphan")

@@ -7,6 +7,7 @@ from app.core.database import Base
 # This loads your models so Alembic can see them
 # We'll import models here as we create them
 from app.models import user
+from app.models import body_metric
 
 config = context.config
 
